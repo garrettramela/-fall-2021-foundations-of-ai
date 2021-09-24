@@ -1,0 +1,411 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Foundations of AI - Assignment 1},
+  pdfauthor={Garrett Ramela},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Foundations of AI - Assignment 1}
+\author{Garrett Ramela}
+\date{9/23/2021}
+
+\begin{document}
+\maketitle
+
+\hypertarget{r-markdown}{%
+\subsection{R Markdown}\label{r-markdown}}
+
+This is an R Markdown document. Markdown is a simple formatting syntax
+for authoring HTML, PDF, and MS Word documents. For more details on
+using R Markdown see \url{http://rmarkdown.rstudio.com}.
+
+When you click the \textbf{Knit} button a document will be generated
+that includes both content as well as the output of any embedded R code
+chunks within the document. You can embed an R code chunk like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Ensure that your current working directory is set up properly.}
+\CommentTok{\# setwd("\textasciitilde{}/Documents/George Washington University/Foundations of AI/Assignment 1")}
+
+\CommentTok{\# Read the College.csv data set into RStudio.}
+\NormalTok{college }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}College.csv\textquotesingle{}}\NormalTok{) }
+
+\CommentTok{\# Add a new column named rownames that R will not perform calculations on.}
+\FunctionTok{rownames}\NormalTok{(college) }\OtherTok{=}\NormalTok{ college[ ,}\DecValTok{1}\NormalTok{]}
+\FunctionTok{fix}\NormalTok{(college)}
+
+\CommentTok{\# Remove the college column and only show the rownames column.}
+\NormalTok{college }\OtherTok{=}\NormalTok{ college [ , }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\FunctionTok{fix}\NormalTok{(college)}
+
+\CommentTok{\# Using the summary, head, and View functions to get a feel for the college data set.}
+\FunctionTok{summary}\NormalTok{(college)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Private               Apps           Accept          Enroll    
+##  Length:777         Min.   :   81   Min.   :   72   Min.   :  35  
+##  Class :character   1st Qu.:  776   1st Qu.:  604   1st Qu.: 242  
+##  Mode  :character   Median : 1558   Median : 1110   Median : 434  
+##                     Mean   : 3002   Mean   : 2019   Mean   : 780  
+##                     3rd Qu.: 3624   3rd Qu.: 2424   3rd Qu.: 902  
+##                     Max.   :48094   Max.   :26330   Max.   :6392  
+##    Top10perc       Top25perc      F.Undergrad     P.Undergrad     
+##  Min.   : 1.00   Min.   :  9.0   Min.   :  139   Min.   :    1.0  
+##  1st Qu.:15.00   1st Qu.: 41.0   1st Qu.:  992   1st Qu.:   95.0  
+##  Median :23.00   Median : 54.0   Median : 1707   Median :  353.0  
+##  Mean   :27.56   Mean   : 55.8   Mean   : 3700   Mean   :  855.3  
+##  3rd Qu.:35.00   3rd Qu.: 69.0   3rd Qu.: 4005   3rd Qu.:  967.0  
+##  Max.   :96.00   Max.   :100.0   Max.   :31643   Max.   :21836.0  
+##     Outstate       Room.Board       Books           Personal   
+##  Min.   : 2340   Min.   :1780   Min.   :  96.0   Min.   : 250  
+##  1st Qu.: 7320   1st Qu.:3597   1st Qu.: 470.0   1st Qu.: 850  
+##  Median : 9990   Median :4200   Median : 500.0   Median :1200  
+##  Mean   :10441   Mean   :4358   Mean   : 549.4   Mean   :1341  
+##  3rd Qu.:12925   3rd Qu.:5050   3rd Qu.: 600.0   3rd Qu.:1700  
+##  Max.   :21700   Max.   :8124   Max.   :2340.0   Max.   :6800  
+##       PhD            Terminal       S.F.Ratio      perc.alumni   
+##  Min.   :  8.00   Min.   : 24.0   Min.   : 2.50   Min.   : 0.00  
+##  1st Qu.: 62.00   1st Qu.: 71.0   1st Qu.:11.50   1st Qu.:13.00  
+##  Median : 75.00   Median : 82.0   Median :13.60   Median :21.00  
+##  Mean   : 72.66   Mean   : 79.7   Mean   :14.09   Mean   :22.74  
+##  3rd Qu.: 85.00   3rd Qu.: 92.0   3rd Qu.:16.50   3rd Qu.:31.00  
+##  Max.   :103.00   Max.   :100.0   Max.   :39.80   Max.   :64.00  
+##      Expend        Grad.Rate     
+##  Min.   : 3186   Min.   : 10.00  
+##  1st Qu.: 6751   1st Qu.: 53.00  
+##  Median : 8377   Median : 65.00  
+##  Mean   : 9660   Mean   : 65.46  
+##  3rd Qu.:10830   3rd Qu.: 78.00  
+##  Max.   :56233   Max.   :118.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(college)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                              Private Apps Accept Enroll Top10perc Top25perc
+## Abilene Christian University     Yes 1660   1232    721        23        52
+## Adelphi University               Yes 2186   1924    512        16        29
+## Adrian College                   Yes 1428   1097    336        22        50
+## Agnes Scott College              Yes  417    349    137        60        89
+## Alaska Pacific University        Yes  193    146     55        16        44
+## Albertson College                Yes  587    479    158        38        62
+##                              F.Undergrad P.Undergrad Outstate Room.Board Books
+## Abilene Christian University        2885         537     7440       3300   450
+## Adelphi University                  2683        1227    12280       6450   750
+## Adrian College                      1036          99    11250       3750   400
+## Agnes Scott College                  510          63    12960       5450   450
+## Alaska Pacific University            249         869     7560       4120   800
+## Albertson College                    678          41    13500       3335   500
+##                              Personal PhD Terminal S.F.Ratio perc.alumni Expend
+## Abilene Christian University     2200  70       78      18.1          12   7041
+## Adelphi University               1500  29       30      12.2          16  10527
+## Adrian College                   1165  53       66      12.9          30   8735
+## Agnes Scott College               875  92       97       7.7          37  19016
+## Alaska Pacific University        1500  76       72      11.9           2  10922
+## Albertson College                 675  67       73       9.4          11   9727
+##                              Grad.Rate
+## Abilene Christian University        60
+## Adelphi University                  56
+## Adrian College                      54
+## Agnes Scott College                 59
+## Alaska Pacific University           15
+## Albertson College                   55
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{View}\NormalTok{(college)}
+
+\CommentTok{\# Create a series of plots across the numerical variables within the college data set after}
+\CommentTok{\# making the first column a numerical field.}
+\NormalTok{college[, }\DecValTok{1}\NormalTok{] }\OtherTok{=} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{factor}\NormalTok{(college[, }\DecValTok{1}\NormalTok{]))}
+\FunctionTok{pairs}\NormalTok{(college[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-1---Garrett-Ramela---RMarkdown_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Use the boxplot() function to produce side{-}by{-}side box plots of Outstate versus Private}
+\FunctionTok{boxplot}\NormalTok{(college}\SpecialCharTok{$}\NormalTok{Outstate }\SpecialCharTok{\textasciitilde{}}\NormalTok{ college}\SpecialCharTok{$}\NormalTok{Private,}
+        \AttributeTok{xlab =} \StringTok{"No = Public School / Yes = Private School"}\NormalTok{,}
+        \AttributeTok{ylab =} \StringTok{"Out{-}of{-}State Tuition Rate"}\NormalTok{,}
+        \AttributeTok{col =} \StringTok{"Blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-1---Garrett-Ramela---RMarkdown_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creating variable Elite that includes the top 10 percent of students from high schools and}
+\CommentTok{\# append the field to the existing college data set.}
+\NormalTok{Elite }\OtherTok{=} \FunctionTok{rep}\NormalTok{(}\StringTok{"No"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(college))}
+\NormalTok{Elite[college}\SpecialCharTok{$}\NormalTok{Top10perc }\SpecialCharTok{\textgreater{}} \DecValTok{50}\NormalTok{] }\OtherTok{=} \StringTok{"Yes"}
+\NormalTok{Elite }\OtherTok{=} \FunctionTok{as.factor}\NormalTok{(Elite)}
+\NormalTok{college }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(college, Elite)}
+
+\CommentTok{\# Print a summary of the new college data set with the Elite column.}
+\FunctionTok{summary}\NormalTok{(college)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Private           Apps           Accept          Enroll       Top10perc    
+##  Min.   :1.000   Min.   :   81   Min.   :   72   Min.   :  35   Min.   : 1.00  
+##  1st Qu.:1.000   1st Qu.:  776   1st Qu.:  604   1st Qu.: 242   1st Qu.:15.00  
+##  Median :2.000   Median : 1558   Median : 1110   Median : 434   Median :23.00  
+##  Mean   :1.727   Mean   : 3002   Mean   : 2019   Mean   : 780   Mean   :27.56  
+##  3rd Qu.:2.000   3rd Qu.: 3624   3rd Qu.: 2424   3rd Qu.: 902   3rd Qu.:35.00  
+##  Max.   :2.000   Max.   :48094   Max.   :26330   Max.   :6392   Max.   :96.00  
+##    Top25perc      F.Undergrad     P.Undergrad         Outstate    
+##  Min.   :  9.0   Min.   :  139   Min.   :    1.0   Min.   : 2340  
+##  1st Qu.: 41.0   1st Qu.:  992   1st Qu.:   95.0   1st Qu.: 7320  
+##  Median : 54.0   Median : 1707   Median :  353.0   Median : 9990  
+##  Mean   : 55.8   Mean   : 3700   Mean   :  855.3   Mean   :10441  
+##  3rd Qu.: 69.0   3rd Qu.: 4005   3rd Qu.:  967.0   3rd Qu.:12925  
+##  Max.   :100.0   Max.   :31643   Max.   :21836.0   Max.   :21700  
+##    Room.Board       Books           Personal         PhD        
+##  Min.   :1780   Min.   :  96.0   Min.   : 250   Min.   :  8.00  
+##  1st Qu.:3597   1st Qu.: 470.0   1st Qu.: 850   1st Qu.: 62.00  
+##  Median :4200   Median : 500.0   Median :1200   Median : 75.00  
+##  Mean   :4358   Mean   : 549.4   Mean   :1341   Mean   : 72.66  
+##  3rd Qu.:5050   3rd Qu.: 600.0   3rd Qu.:1700   3rd Qu.: 85.00  
+##  Max.   :8124   Max.   :2340.0   Max.   :6800   Max.   :103.00  
+##     Terminal       S.F.Ratio      perc.alumni        Expend     
+##  Min.   : 24.0   Min.   : 2.50   Min.   : 0.00   Min.   : 3186  
+##  1st Qu.: 71.0   1st Qu.:11.50   1st Qu.:13.00   1st Qu.: 6751  
+##  Median : 82.0   Median :13.60   Median :21.00   Median : 8377  
+##  Mean   : 79.7   Mean   :14.09   Mean   :22.74   Mean   : 9660  
+##  3rd Qu.: 92.0   3rd Qu.:16.50   3rd Qu.:31.00   3rd Qu.:10830  
+##  Max.   :100.0   Max.   :39.80   Max.   :64.00   Max.   :56233  
+##    Grad.Rate      Elite    
+##  Min.   : 10.00   No :699  
+##  1st Qu.: 53.00   Yes: 78  
+##  Median : 65.00            
+##  Mean   : 65.46            
+##  3rd Qu.: 78.00            
+##  Max.   :118.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Use the boxplot() function to produce side{-}by{-}side box plots of Outstate versus the new Elite variable.}
+\FunctionTok{boxplot}\NormalTok{(college}\SpecialCharTok{$}\NormalTok{Outstate }\SpecialCharTok{\textasciitilde{}}\NormalTok{ college}\SpecialCharTok{$}\NormalTok{Elite,}
+        \AttributeTok{xlab =} \StringTok{"No = Not Elite School / Yes = Elite School"}\NormalTok{,}
+        \AttributeTok{ylab =} \StringTok{"Out{-}of{-}State Tuition Rate"}\NormalTok{,}
+        \AttributeTok{col =} \StringTok{"Blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-1---Garrett-Ramela---RMarkdown_files/figure-latex/unnamed-chunk-1-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print a series of six (6) histrograms showing distributions of applicants, accepted students,}
+\CommentTok{\# percentage of PhDs, student/faculty ratio, percent of alumni who donate, and graduation rate.}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\FunctionTok{hist}\NormalTok{(college}\SpecialCharTok{$}\NormalTok{Apps,}
+     \AttributeTok{main =} \StringTok{"Student Applicants"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Student Applicants"}\NormalTok{,}
+     \AttributeTok{col =} \StringTok{"Blue"}\NormalTok{,}
+     \AttributeTok{breaks =} \DecValTok{50}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(college}\SpecialCharTok{$}\NormalTok{Accept,}
+     \AttributeTok{main =} \StringTok{"Accepted Students"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Accepted Students"}\NormalTok{,}
+     \AttributeTok{col =} \StringTok{"Blue"}\NormalTok{,}
+     \AttributeTok{breaks =} \DecValTok{50}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(college}\SpecialCharTok{$}\NormalTok{PhD,}
+     \AttributeTok{main =} \StringTok{"PhD Faculty Percentage"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"PhD Faculty Percentage"}\NormalTok{,}
+     \AttributeTok{col =} \StringTok{"Blue"}\NormalTok{,}
+     \AttributeTok{breaks =} \DecValTok{50}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(college}\SpecialCharTok{$}\NormalTok{S.F.Ratio,}
+     \AttributeTok{main =} \StringTok{"Student/Faculty Ratio"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Student/Faculty Ratio"}\NormalTok{,}
+     \AttributeTok{col =} \StringTok{"Blue"}\NormalTok{,}
+     \AttributeTok{breaks =} \DecValTok{50}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(college}\SpecialCharTok{$}\NormalTok{perc.alumni,}
+     \AttributeTok{main =} \StringTok{"Donating Alumni Percentage"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Donating Alumni Percentage"}\NormalTok{,}
+     \AttributeTok{col =} \StringTok{"Blue"}\NormalTok{,}
+     \AttributeTok{breaks =} \DecValTok{50}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(college}\SpecialCharTok{$}\NormalTok{Grad.Rate,}
+     \AttributeTok{main =} \StringTok{"Graduation Rate"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Graduation Rate"}\NormalTok{,}
+     \AttributeTok{col =} \StringTok{"Blue"}\NormalTok{,}
+     \AttributeTok{breaks =} \DecValTok{50}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-1---Garrett-Ramela---RMarkdown_files/figure-latex/unnamed-chunk-1-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Use the plot() function to produce side{-}by{-}side box plots of Outstate versus Private}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(college, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ S.F.Ratio, }\AttributeTok{y =}\NormalTok{ Outstate)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ Private, }\AttributeTok{shape =}\NormalTok{ Elite)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Student/Faculty Ratio Effect on Tuition"}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"Grouped Across Public \& Public Schools"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Student/Faculty Ratio"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Out{-}of{-}State Tuition Rate"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Private School"}\NormalTok{,}
+       \AttributeTok{shape =} \StringTok{"Elite School"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Assignment-1---Garrett-Ramela---RMarkdown_files/figure-latex/unnamed-chunk-1-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(college, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ PhD, }\AttributeTok{y =}\NormalTok{ Outstate)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ Private, }\AttributeTok{shape =}\NormalTok{ Elite)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Faculty PhD Percentage Effect on Tuition"}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"Grouped Across Public \& Public Schools"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Faculty with PhDs Percentage"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Out{-}of{-}State Tuition Rate"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Private School"}\NormalTok{,}
+       \AttributeTok{shape =} \StringTok{"Elite School"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Assignment-1---Garrett-Ramela---RMarkdown_files/figure-latex/unnamed-chunk-1-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(college, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ perc.alumni, }\AttributeTok{y =}\NormalTok{ Outstate)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ Private, }\AttributeTok{shape =}\NormalTok{ Elite)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =}\NormalTok{ lm) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Donating Alumni Percentage Effect on Tuition"}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"Grouped Across Public \& Public Schools"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Donating Alumni Percentage"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Out{-}of{-}State Tuition Rate"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Private School"}\NormalTok{,}
+       \AttributeTok{shape =} \StringTok{"Elite School"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Assignment-1---Garrett-Ramela---RMarkdown_files/figure-latex/unnamed-chunk-1-7.pdf}
+
+\end{document}
