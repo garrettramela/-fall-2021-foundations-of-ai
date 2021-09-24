@@ -12,16 +12,14 @@ library(rmdformats)
 library(ggplot2)
 ```
 
-## R Markdown
+## College Data Set Summary
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+The following R analysis seeks to better under the college.csv data set and generate some tangible insights from the data. The analysis focuses on understanding the differences between private/public colleges and on tuition differences.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## Initial Cleaning/Synthesis
 
-```{r}
-# Ensure that your current working directory is set up properly.
-# setwd("~/Documents/George Washington University/Foundations of AI/Assignment 1")
-
+Please ensure that your working directory is set up properly for the r code to read the college.csv data set.
+```{r echo=TRUE, paged.print=TRUE}
 # Read the College.csv data set into RStudio.
 college <- read.csv('College.csv') 
 
@@ -42,7 +40,11 @@ View(college)
 # making the first column a numerical field.
 college[, 1] = as.numeric(factor(college[, 1]))
 pairs(college[,1:10])
+```
 
+## Basic Boxplots Across Public/Private Schools
+
+```{r}
 # Use the boxplot() function to produce side-by-side box plots of Outstate versus Private
 boxplot(college$Outstate ~ college$Private,
         xlab = "No = Public School / Yes = Private School",
@@ -64,7 +66,11 @@ boxplot(college$Outstate ~ college$Elite,
         xlab = "No = Not Elite School / Yes = Elite School",
         ylab = "Out-of-State Tuition Rate",
         col = "Blue")
+```
 
+## Histograms
+
+```{r}
 # Print a series of six (6) histrograms showing distributions of applicants, accepted students,
 # percentage of PhDs, student/faculty ratio, percent of alumni who donate, and graduation rate.
 par(mfrow = c(2, 3))
@@ -99,6 +105,12 @@ hist(college$Grad.Rate,
      col = "Blue",
      breaks = 50)
 
+
+```
+
+## Fun ggplot2 scatterplots
+
+```{r}
 # Use the plot() function to produce side-by-side box plots of Outstate versus Private
 library(ggplot2)
 ggplot(college, aes(x = S.F.Ratio, y = Outstate)) +
