@@ -14,7 +14,7 @@ library(ggplot2)
 
 ## College Data Set Summary
 
-The following R analysis seeks to better under the college.csv data set and generate some tangible insights from the data. The analysis focuses on understanding the differences between private/public colleges and on tuition differences.
+The following R analysis seeks to better under the college.csv data set and generate some tangible insights from the data. The analysis focuses on understanding the differences between private/public colleges and on tuition differences. It's worthy to note that private colleges tend to have higher tuition rates on average. Most schools have high PhD faculty percentages and low student/faculty ratios. Graduation rates and donating alumni percentages var widely among schools. Student/faculty ratios have an inverse effect on tuition prices while PhD faculty and donating alumni percentages have a direct relationship on tuition, however, the relationships have more variation than compared to the student/faculty ratio.
 
 ## Initial Cleaning/Synthesis
 
@@ -104,11 +104,9 @@ hist(college$Grad.Rate,
      xlab = "Graduation Rate",
      col = "Blue",
      breaks = 50)
-
-
 ```
 
-## Fun ggplot2 scatterplots
+## S/F Ratio/Faculty PhDs/Donating Alumni Scatterplots
 
 ```{r}
 # Use the plot() function to produce side-by-side box plots of Outstate versus Private
